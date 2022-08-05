@@ -9,12 +9,16 @@
     <form name="order_form" method="POST" action="/orders/create">
     <table>
         <tr>
-        <td>Order name</td>
-        <td><input type="text" name="short_desc" ></td>
+          <td>Short description</td>
+          <td><input type="text" name="short_desc" ></td>
         </tr>
         <tr>
-        <td>Description</td>
-        <td><input type="text" name="description" ></td>
+          <td>Description</td>
+          <td><input type="text" name="desc" ></td>
+        </tr>
+        <tr>
+          <td>Some number</td>
+          <td><input type="number" name="some_num" ></td>
         </tr>
         <tr>
         <td colspan="2"><input type="submit" value="Save" ></td>

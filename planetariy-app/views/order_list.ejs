@@ -6,12 +6,24 @@
   </head>
   <body>
     <h1>Все заявки</h1>
-    <% if (locals.order_list) { %>
-      <% for (var i = 0; i < order_list.length; i++ ) { %>
-        <p><%= order_list[i].short_desc %></p>
-        <p><%= order_list[i]._id %></p>
-      <% } %>
-    <%}%>
+    <table>
+        <tr>
+         <th>ID</th>
+         <th>short description</th>
+         <th>description</th>
+         <th>some number</th>
+       </tr>
+        <% if (locals.order_list) { %>
+        <% for (var i = 0; i < order_list.length; i++ ) { %>
+            <tr>
+                <th><%= order_list[i]._id %></th>
+                <th><%= order_list[i].short_desc %></th>
+                <th><%= order_list[i].desc %></th>
+                <th><%= order_list[i].some_num %></th>
+            </tr>
+        <% } %>
+        <%}%>
+    </table>
   
 
   </body>
