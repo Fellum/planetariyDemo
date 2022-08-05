@@ -1,6 +1,4 @@
-const validator = require("express-validator");
-const body = validator.body;
-const validationResult = validator.validationResult;
+const { check, validationResult } = require("express-validator");
 const Order = require('../models/order');
 
 var order = require('../models/order');
@@ -25,16 +23,28 @@ exports.order_create_get = function(req, res) {
 
 // Handle order create on POST.
 exports.order_create_post = [
-    // Validate and sanitize the name field.
-    body("short_desc", "Order name required").trim().isLength({ min: 1 }).escape(),
-  
+    check("short_desc")
+        .not()
+        .isEmpty()
+        .withMessage("Short description is required"),
+    check("desc")
+        .not()
+        .isEmpty()
+        .withMessage("Description is required"),
+    check("some_num")
+        .not()
+        .isEmpty()
+        .withMessage("Some number is reuired")
+        .bail()
+        .custom((value) => !isNaN(value))
+        .withMessage("Some number not number"),
     // Process request after validation and sanitization.
     async (req, res, next) => {
       // Extract the validation errors from a request.
         const errors = validationResult(req);
   
         // Create a genre object with escaped and trimmed data.
-        const order = new Order({ short_desc: req.body.short_desc, desc: req.body.description });
+        const order = new Order({ short_desc: req.body.short_desc, desc: req.body.desc, some_num: req.body.some_num });
         
     
         if (!errors.isEmpty()) {
