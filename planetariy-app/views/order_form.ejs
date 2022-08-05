@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form name="order_form" method="POST" action="/orders/create">
+    <table>
+        <tr>
+        <td>Order name</td>
+        <td><input type="text" name="short_desc" ></td>
+        </tr>
+        <tr>
+        <td>Description</td>
+        <td><input type="text" name="description" ></td>
+        </tr>
+        <tr>
+        <td colspan="2"><input type="submit" value="Save" ></td>
+        </tr>
+    </table>
+    </form>
+    <% if (locals.errors) { %>
+      <% for (var i = 0; i < errors.length; i++ ) { %>
+        <p><%- errors[i].msg %></p>
+      <% } %>
+    <%}%>
+  
+
+  </body>
+</html>

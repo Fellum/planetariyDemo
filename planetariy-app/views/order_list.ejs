@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Все заявки</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Все заявки</h1>
+    <% if (locals.order_list) { %>
+      <% for (var i = 0; i < order_list.length; i++ ) { %>
+        <p><%= order_list[i].short_desc %></p>
+        <p><%= order_list[i]._id %></p>
+      <% } %>
+    <%}%>
+  
+
+  </body>
+</html>
